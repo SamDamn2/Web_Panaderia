@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <title>PRODUCCION</title>
+</head>
+<body>
+    <h1>Agregar produccion</h1>
+    <form action="{{url_for('productBaker.add')}}" method="post">
+        <label for="product">Producto:</label>
+        <select id="product_id" name="product_id">
+            {% for product in products %}
+                <option value="{{ product.id }}">{{ product.nombrepro }}</option>
+            {% endfor %}
+        </select>
+        <label for="baker">Panadero:</label>
+        <select id="baker_id" name="baker_id">
+            {% for baker in bakers %}
+                <option value="{{ baker.id }}">{{ baker.nombrepana }}</option>
+            {% endfor %}
+        </select>
+        <label for="fechaprepa">Fecha de preparacion:</label>
+        <input type="date" id="fechaprepa" name="fechaprepa" required>
+        <label for="cantidad">Cantidad:</label>
+        <input type="text" id="cantidad" name="cantidad" required>
+        <button type="submit">Agregar produccion</button>
+    </form>
+</body>
+</html>

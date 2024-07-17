@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <title>EDITAR PRODUCCION</title>
+</head>
+<body>
+    <h1>Editar produccion</h1>
+    <form action="{{url_for('productBaker.edit', id=productBaker.id )}}" method="post">
+        <label for="product">Producto:</label>
+        <select name="product_id" id="product_id">
+            {% for product in products %}
+                <option value="{{ product.id }}" {% if product.id == productBaker.product_id %} select {% endif %}>{{ product.nombrepro }}</option>
+            {% endfor %}
+        </select>
+        <label for="baker">Panadero:</label>
+        <select name="baker_id" id="baker_id">
+            {% for baker in panadero %}
+                <option value="{{ baker.id }}" {% if baker.id == productBaker.baker_id %} select {% endif %}>{{ baker.nombrepana }}</option>
+            {% endfor %}
+        </select>
+        <label for="fechaprepa">Fecha de preparacion:</label>
+        <input type="date" id="fechaprepa" name="fechaprepa" value="{{ productBaker.fechaprepa }}" required>
+        <label for="cantidad">Cantidad:</label>
+        <input type="text" id="cantidad" name="cantidad" value="{{ productBaker.cantidad }}" required>
+        <button type="submit">Actualizar produccion</button>
+    </form>
+</body>
+</html>

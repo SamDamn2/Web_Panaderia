@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <title>PANADERO</title>
+</head>
+<body>
+    <h1>Lista de panaderos</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Especialidad</th>
+            <th>Acciones</th>
+        </tr>
+        {% for baker in data %}
+                <td>{{ baker.id }}</td>
+                <td>{{ baker.nombrepana }}</td>
+                <td>{{ baker.especipana }}</td>
+                <td>
+                    <a href="{{url_for('baker.edit', id=baker.id)}}">Editar</a>
+                    <a href="{{url_for('baker.delete', id=baker.id)}}">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{{url_for('baker.add')}}">Agregar panadero</a>
+    <a href="{{url_for('product.index')}}">Ir a productos</a>
+    <a href="{{url_for('productBaker.index')}}">Ir a produccion </a>
+</body>
+</html>

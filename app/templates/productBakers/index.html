@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <title>PRODUCCION</title>
+</head>
+<body>
+    <h1>Lista de la produccion</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Producto</th>
+            <th>Panadero</th>
+            <th>Fecha de preparacion</th>
+            <th>Cantidad</th>
+        </tr>
+        {% for productBaker in data %}
+            <tr>
+                <td>{{ productBaker.id}}</td>
+                <td>
+                    {% for product in products %}
+                        {% if product.id == productBaker.products %}
+                            {{ product.nombrepro }}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for baker in panadero %}
+                        {% if baker.id == productBaker.bakers %}
+                            {{ baker.nombrepana }}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>{{ productBaker.fechaprepa }}</td>
+                <td>{{ productBaker.cantidad }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{{url_for('productBaker.add')}}">Agregar produccion</a>
+    <a href="{{url_for('baker.index')}}">Ir a panaderos</a>
+    <a href="{{url_for('product.index')}}">Ir a productos </a>
+</body>
+</html>

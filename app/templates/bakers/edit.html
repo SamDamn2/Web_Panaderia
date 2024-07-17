@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <title>EDITAR PANADERO</title>
+</head>
+<body>
+    <h1>Editar panadero</h1>
+    <form action="{{url_for('baker.edit', id=baker.id )}}" method="post">
+        <label for="nombrepana">Nombre:</label>
+        <input type="text" id="nombrepana" name="nombrepana" value="{{baker.nombrepana}}" required>
+        <label for="especipana">Especialidad:</label>
+        <input type="text" id="especipana" name="especipana" value="{{baker.especipana}}" required>
+        <button type="submit">Actualizar panadero</button>
+    </form>
+</body>
+</html>

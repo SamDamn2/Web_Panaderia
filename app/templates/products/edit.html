@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <title>EDITAR PRODUCTO</title>
+</head>
+<body>
+    <h1>Editar producto</h1>
+    <form action="{{url_for('product.edit', id=product.id )}}" method="post">
+        <label for="nombrepro">Nombre:</label>
+        <input type="text" id="nombrepro" name="nombrepro" value="{{product.nombrepro}}" required>
+        <label for="descripro">Descripcion:</label>
+        <input type="text" id="descripro" name="descripro" value="{{product.descripro}}" required>
+        <label for="preciopro">Precio:</label>
+        <input type="text" id="preciopro" name="preciopro" value="{{product.preciopro}}" required>
+        <button type="submit">Actualizar producto</button>
+    </form>
+</body>
+</html>
